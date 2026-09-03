@@ -22,6 +22,10 @@
 ;;
 
 ;; data vars
+;;define the variables
+(define-data-var members (list 100 principal) (list))
+(define-data-var votes-required uint u1)
+
 ;;
 
 ;; data maps
