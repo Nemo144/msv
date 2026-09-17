@@ -56,6 +56,10 @@
 ;;
 
 ;; read only functions
+;;rof to retrieve a vote
+(define-read-only (get-member (member principal) (recipient principal)) 
+    (default-to false (get decision (map-get? votes {member: member, recipient: recipient})))
+)
 ;;
 
 ;; private functions
