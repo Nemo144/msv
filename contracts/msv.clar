@@ -56,12 +56,25 @@
 ;;
 
 ;; read only functions
+;;rof to get-votes
+(define-read-only (get-vote (member principal) (recipient principal))
+	(default-to false (get decision (map-get? votes {member: member, recipient: recipient})))
+)
+
 ;;rof to retrieve a vote
 (define-read-only (get-member (member principal) (recipient principal)) 
     (default-to false (get decision (map-get? votes {member: member, recipient: recipient})))
 )
+;;rof for the tally-votes
+(define-read-only (tally-votes) 
+    (fold tally (var-get members) u0)
+)
 ;;
 
 ;; private functions
+;;define the tally function for counting the votes
+(define-private (tally (member principal) (accumulator uint))
+    (if (get-vote member tx-sender) (+ accumulator u1) accumulator)
+)
 ;;
 
