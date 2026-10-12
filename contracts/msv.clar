@@ -70,6 +70,11 @@
         (ok total-votes)
     )
 )
+
+;;deposit function
+(define-public (deposit (amount uint))
+    (stx-transfer? amount tx-sender current-contract)
+)
 ;;
 
 ;; read only functions
